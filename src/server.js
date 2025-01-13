@@ -10,13 +10,7 @@ const PORT = process.env.PORT || 3000; // Utilise le port défini par la platefo
 
 // Middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.static('public')); // Sert les fichiers frontend depuis le dossier "public"
-
-// Route principale pour le frontend
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: 'public' });
-});
+app.use(express.json());  // Pour parser les requêtes JSON
 
 // Route pour gérer la connexion
 app.post('/login', (req, res) => {
