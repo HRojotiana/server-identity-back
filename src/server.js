@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());  // Pour parser les requêtes JSON
 
 // Route pour gérer la connexion
-app.get('/login', (req, res) => {
+app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   // Identifiants par défaut (à remplacer par une vraie base de données plus tard)
