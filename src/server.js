@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(json());
 
 // Définir les origines autorisées (URL de votre frontend Firebase)
-const allowedOrigins = ['https://votre-frontend.firebaseapp.com'];
+const allowedOrigins = ['https://server-identity.firebaseapp.com/'];
 
 app.use(cors({
   origin: function (origin, callback) {
