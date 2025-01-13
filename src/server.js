@@ -35,7 +35,6 @@ app.post('/login', (req, res) => {
 
   if (email === defaultUser && password === defaultPassword) {
     res.status(200).json({ message: 'Connexion réussie' });
-    alert("Connexion réussie")
   } else {
     res.status(401).json({ error: 'Identifiants incorrects' });
   }
