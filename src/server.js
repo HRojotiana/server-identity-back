@@ -1,25 +1,11 @@
-import express, { json } from 'express';
-import cors from 'cors';
-import { config } from 'dotenv';
+const express = require('express');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware pour analyser le corps des requêtes JSON
-app.use(json());
-
-// Définir les origines autorisées (URL de votre frontend Firebase)
-const allowedOrigins = ['https://server-identity.firebaseapp.com/'];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(express.json());
 
 // Endpoint pour fournir la configuration Firebase
 app.get('/config', (req, res) => {
@@ -30,7 +16,7 @@ app.get('/config', (req, res) => {
       projectId: process.env.FIREBASE_PROJECTID,
       storageBucket: process.env.FIREBASE_STORAGEBUCKET ,
       messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
-      appId: process.env.FIREBASE_APPID 
+      appId: process.env.FIREBASE_APPID,
     },
   });
 });
