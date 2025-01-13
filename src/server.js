@@ -12,6 +12,19 @@ const PORT = process.env.PORT || 3000; // Utilise le port défini par la platefo
 app.use(cors());
 app.use(express.json());  // Pour parser les requêtes JSON
 
+const firebaseConfig = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN ,
+  projectId: process.env.FIREBASE_PROJECTID,
+  storageBucket: process.env.FIREBASE_STORAGEBUCKET ,
+  messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.FIREBASE_APPID
+};
+
+app.get('/config', (req, res) => {
+  res.json({ firebaseConfig });
+});
+
 // Route pour gérer la connexion
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
