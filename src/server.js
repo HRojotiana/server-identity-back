@@ -1,11 +1,13 @@
-const express = require('express');
-require('dotenv').config();
+import express, { json } from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware pour analyser le corps des requêtes JSON
-app.use(express.json());
+app.use(json());
 
 // Endpoint pour fournir la configuration Firebase
 app.get('/config', (req, res) => {
